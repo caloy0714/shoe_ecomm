@@ -44,8 +44,13 @@ html{
 }
 
 body{
-   background-color: var(--light-bg);
-}
+   background-image: url('https://wallpapertag.com/wallpaper/full/6/e/d/389331-amazing-light-grey-background-2560x1600-1080p.jpg');
+   background-repeat:no-repeat;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+}  
 
 section{
    padding:2rem;
@@ -63,7 +68,8 @@ section{
 
 .btn,
 .delete-btn,
-.option-btn{
+.option-btn,
+.orange-button{
    display: block;
    width: 100%;
    margin-top: 1rem;
@@ -82,12 +88,16 @@ section{
    background-color: var(--black);
 }
 
+.orange-button{
+   background-color: var(--orange);
+}
+
 .btn{
    background-color: var(--main-color);
 }
 
 .option-btn{
-   background-color: var(--orange);
+   background-color: var(--main-color);
 }
 
 .delete-btn{
@@ -102,7 +112,7 @@ section{
 .message{
    position: sticky;
    top:0;
-   max-width: 1200px;
+   max-width: 1300px;
    margin:0 auto;
    background-color: var(--light-bg);
    padding:2rem;
@@ -155,7 +165,7 @@ section{
 .header{
    position: sticky;
    top:0; left:0; right:0;
-   background-color: var(--white);
+   background-color: var(--light-bg);
    box-shadow: var(--box-shadow);
    z-index: 1000;
 }
@@ -233,9 +243,10 @@ section{
 }
 
 .home-bg{
-   background:url(../images/home-bg.png) no-repeat;
-   background-size: cover;
+   background:url('https://img.freepik.com/free-photo/product-showcase-spotlight-background-empty-room-3d-rendering_152359-283.jpg?size=626&ext=jpg');
    background-position: center;
+   background-size: cover; 
+   background-repeat:no-repeat;
 }
 
 .home-bg .home .slide{
@@ -937,7 +948,6 @@ section{
 
 .footer{
    background-color: var(--white);
-   /* padding-bottom: 7rem; */
 }
 
 .footer .grid{
@@ -1058,4 +1068,6 @@ section{
       width: 100%;
    }
 
+   
 }
+

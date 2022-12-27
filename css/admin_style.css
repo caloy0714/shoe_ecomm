@@ -17,7 +17,6 @@
    margin:0; padding:0;
    box-sizing: border-box;
    outline: none; border:none;
-   text-decoration: none;
 }
 
 *::selection{
@@ -195,9 +194,10 @@ section{
 .header{
    position: sticky;
    top:0; left:0; right:0;
-   background-color: var(--white);
+   background-color: var(--light-bg);
    box-shadow: var(--box-shadow);
    z-index: 1000;
+   text-decoration: white;
 }
 
 .header .flex{
@@ -258,7 +258,7 @@ section{
 
 .header .flex .profile p{
    text-align: center;
-   color:var(--black);
+   color:var(--white);
    font-size: 2rem;
    margin-bottom: 1rem;
 }
@@ -624,4 +624,6 @@ section{
       grid-template-columns: 1fr;
    }
 
+
 }
+

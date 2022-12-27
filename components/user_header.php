@@ -10,21 +10,23 @@
       }
    }
 ?>
-
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 <header class="header">
-
    <section class="flex">
 
-      <a href="home.php" class="logo">IPT10 FINAL PROJECT<span>.</span></a>
+      <a href="home.php" class="logo"><img src="images/logo.png" height="80" width="80"><span>Sneaker Crib</span></a>
 
-      <nav class="navbar">
-         <a href="home.php">home</a>
-         <a href="about.php">about</a>
-         <a href="orders.php">orders</a>
-         <a href="shop.php">shop</a>
-         <a href="contact.php">contact</a>
-      </nav>
-
+      <div class="navbar">
+         <nav>
+            <a href="home.php">Home</a>
+            <a href="shop.php">Shop</a>
+            <a href="category.php?category=Nike">Most Popular</a>
+            <a href="orders.php">Orders</a>
+         </nav>
+      </div>
       <div class="icons">
          <?php
             $count_wishlist_items = $conn->prepare("SELECT * FROM `wishlist` WHERE user_id = ?");
@@ -36,7 +38,6 @@
             $total_cart_counts = $count_cart_items->rowCount();
          ?>
          <div id="menu-btn" class="fas fa-bars"></div>
-         <a href="search_page.php"><i class="fas fa-search"></i></a>
          <a href="wishlist.php"><i class="fas fa-heart"></i><span>(<?= $total_wishlist_counts; ?>)</span></a>
          <a href="cart.php"><i class="fas fa-shopping-cart"></i><span>(<?= $total_cart_counts; ?>)</span></a>
          <div id="user-btn" class="fas fa-user"></div>
@@ -50,7 +51,6 @@
             $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
          ?>
          <p><?= $fetch_profile["name"]; ?></p>
-         <a href="update_user.php" class="btn">update profile</a>
          <div class="flex-btn">
             <a href="user_register.php" class="option-btn">register</a>
             <a href="user_login.php" class="option-btn">login</a>
@@ -59,7 +59,6 @@
          <?php
             }else{
          ?>
-         <p>please login or register first!</p>
          <div class="flex-btn">
             <a href="user_register.php" class="option-btn">register</a>
             <a href="user_login.php" class="option-btn">login</a>
@@ -74,3 +73,4 @@
    </section>
 
 </header>
+</html>

@@ -12,18 +12,16 @@
 ?>
 
 <header class="header">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <section class="flex">
 
-      <a href="../admin/dashboard.php" class="logo">Admin<span>Panel</span></a>
+      <a href="products.php" class="logo"><img src="../images/logo_2.png" height="80" width="80"><span>Sneaky Makers</span></a>
 
       <nav class="navbar">
-         <a href="../admin/dashboard.php">home</a>
          <a href="../admin/products.php">products</a>
          <a href="../admin/placed_orders.php">orders</a>
          <a href="../admin/admin_accounts.php">admins</a>
          <a href="../admin/users_accounts.php">users</a>
-         <a href="../admin/messages.php">messages</a>
       </nav>
 
       <div class="icons">

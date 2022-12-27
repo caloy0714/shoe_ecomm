@@ -14,9 +14,9 @@ if(isset($_SESSION['user_id'])){
 if(isset($_POST['order'])){
 
    $name = $_POST['name'];
-   $name = filter_var($name, FILTER_SANITIZE_STRING);
+   $name = filter_var($name);
    $number = $_POST['number'];
-   $number = filter_var($number, FILTER_SANITIZE_STRING);
+   $number = filter_var($number);
    $email = $_POST['email'];
    $email = filter_var($email, FILTER_SANITIZE_STRING);
    $method = $_POST['method'];
@@ -67,7 +67,7 @@ if(isset($_POST['order'])){
 
 <section class="checkout-orders">
 
-   <form action="" method="POST">
+   <form action="" method="POST" >
 
    <h3>your orders</h3>
 
@@ -115,29 +115,30 @@ if(isset($_POST['order'])){
             <select name="method" class="box" required>
                <option value="cash on delivery">cash on delivery</option>
                <option value="credit card">credit card</option>
-               <option value="paytm">paytm</option>
                <option value="paypal">paypal</option>
+               <option value="gcash">GCash</option>
+               <option value="crib wallet">Crib wallet</option>
             </select>
          </div>
          <div class="inputBox">
             <span>address line 01 :</span>
-            <input type="text" name="flat" placeholder="e.g. flat number" class="box" maxlength="50" required>
+            <input type="text" name="flat" placeholder="" class="box" maxlength="50" required>
          </div>
          <div class="inputBox">
             <span>address line 02 :</span>
-            <input type="text" name="street" placeholder="e.g. street name" class="box" maxlength="50" required>
+            <input type="text" name="street" placeholder="e.g. street name" class="box" maxlength="50">
          </div>
          <div class="inputBox">
             <span>city :</span>
-            <input type="text" name="city" placeholder="e.g. mumbai" class="box" maxlength="50" required>
+            <input type="text" name="city" placeholder="" class="box" maxlength="50" required>
          </div>
          <div class="inputBox">
             <span>state :</span>
-            <input type="text" name="state" placeholder="e.g. maharashtra" class="box" maxlength="50" required>
+            <input type="text" name="state" placeholder="" class="box" maxlength="50" required>
          </div>
          <div class="inputBox">
             <span>country :</span>
-            <input type="text" name="country" placeholder="e.g. India" class="box" maxlength="50" required>
+            <input type="text" name="country" placeholder="" class="box" maxlength="50" required>
          </div>
          <div class="inputBox">
             <span>pin code :</span>
@@ -150,18 +151,6 @@ if(isset($_POST['order'])){
    </form>
 
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
 
 <?php include 'components/footer.php'; ?>
 

@@ -1,7 +1,7 @@
 <?php
 
 include 'components/connect.php';
-
+include 'components/wishlist_cart.php';
 session_start();
 
 if(isset($_SESSION['user_id'])){
@@ -10,7 +10,7 @@ if(isset($_SESSION['user_id'])){
    $user_id = '';
 };
 
-include 'components/wishlist_cart.php';
+
 
 ?>
 
@@ -23,16 +23,18 @@ include 'components/wishlist_cart.php';
    <title>HOME</title>
 
    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-   
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css">
+   <!-- CSS only -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+   <!-- JavaScript Bundle with Popper -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 </head>
 <body>
-   
 <?php include 'components/user_header.php'; ?>
 
 <div class="home-bg">
@@ -45,34 +47,23 @@ include 'components/wishlist_cart.php';
 
       <div class="swiper-slide slide">
          <div class="image">
-            <img src="images/home-img-1.png" alt="">
+            <img src="images/home_shoe_1.png" alt="" opacity="30">
          </div>
          <div class="content">
-            <span>upto 50% off</span>
-            <h3>latest smartphones</h3>
-            <a href="shop.php" class="btn">shop now</a>
+            <span>Order Now</span>
+            <h3>Our Latest Shoes</h3>
+            <a href="shop.php" class="orange-button"><b>Click Now</b></a>
          </div>
       </div>
 
       <div class="swiper-slide slide">
          <div class="image">
-            <img src="images/home-img-2.png" alt="">
+            <img src="images/home_shoe_2.png" alt="">
          </div>
          <div class="content">
-            <span>upto 50% off</span>
-            <h3>latest watches</h3>
-            <a href="shop.php" class="btn">shop now</a>
-         </div>
-      </div>
-
-      <div class="swiper-slide slide">
-         <div class="image">
-            <img src="images/home-img-3.png" alt="">
-         </div>
-         <div class="content">
-            <span>upto 50% off</span>
-            <h3>latest headsets</h3>
-            <a href="shop.php" class="btn">shop now</a>
+            <span>Most Popular</span>
+            <h3>New Shoes from the block</h3>
+            <a href="shop.php" class="orange-button"><b>Click Now</b></a>
          </div>
       </div>
 
@@ -95,43 +86,29 @@ include 'components/wishlist_cart.php';
    <div class="swiper-wrapper">
 
    <a href="category.php?category=Nike" class="swiper-slide slide">
-      <img src="images/icon-1.png" alt="">
+      <img src="images/category_1.png" 
+      alt="" >
       <h3>Nike</h3>
    </a>
 
-   <a href="category.php?category=Addidas" class="swiper-slide slide">
-      <img src="images/icon-2.png" alt="">
-      <h3>Addidas</h3>
+   <a href="category.php?category=Adidas" class="swiper-slide slide">
+      <img src="https://www.freepnglogos.com/uploads/adidas-logo-png-black-0.png" >
+      <h3>Adidas</h3>
    </a>
 
-   <a href="category.php?category=Sperry" class="swiper-slide slide">
-      <img src="images/icon-3.png" alt="">
-      <h3>Sperry</h3>
+   <a href="category.php?category=New Balance" class="swiper-slide slide">
+      <img src="images/R.png" alt="">
+      <h3>New Balance</h3>
    </a>
 
    <a href="category.php?category=Converse" class="swiper-slide slide">
-      <img src="images/icon-4.png" alt="">
+      <img src="https://th.bing.com/th/id/OIP.zSYdllsGWCSC_1bST3ShTwHaE_?pid=ImgDet&rs=1" alt="">
       <h3>Converse</h3>
    </a>
 
-   <a href="category.php?category=fridge" class="swiper-slide slide">
-      <img src="images/icon-5.png" alt="">
-      <h3>fridge</h3>
-   </a>
-
-   <a href="category.php?category=washing" class="swiper-slide slide">
-      <img src="images/icon-6.png" alt="">
-      <h3>washing machine</h3>
-   </a>
-
-   <a href="category.php?category=smartphone" class="swiper-slide slide">
-      <img src="images/icon-7.png" alt="">
-      <h3>smartphone</h3>
-   </a>
-
-   <a href="category.php?category=watch" class="swiper-slide slide">
-      <img src="images/icon-8.png" alt="">
-      <h3>watch</h3>
+   <a href="category.php?category=Vans" class="swiper-slide slide">
+      <img src=https://th.bing.com/th/id/OIP.bMoWzsmCJyCKEC42jwFEuAHaC_?pid=ImgDet&rs=1" alt="">
+      <h3>Vans</h3>
    </a>
 
    </div>
@@ -142,9 +119,33 @@ include 'components/wishlist_cart.php';
 
 </section>
 
+<section>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xl-6 col-lg-6 col-md-6" style="border:8px solid 
+#ddd">
+      <img src="images/logo_2.png" alt="responsive webite" class="img-fluid" width="1300" height="600" href="about.php">
+    </div>
+    <div class="col-xl-6 col-lg-6 col-md-6" style="border:10px solid 
+#ddd">
+      <h1><b>What is Sneaker Crib?</b></h1><br>
+      <p style="font-size: 21px">Sneaker Crib Philippines, the top online shopping in the country, has made several contributions 
+         to the growing e-commerce community in the Philippines, creating an avenue for sellers to promote their shoes online. 
+         Sneaker Crib will continue its growth for the quality of service, constantly expanding our assortment of categories and 
+         offering convenient payment options and delivery anywhere in the country.
+      </p>
+      <p style="font-size: 21px">Sneaker Crib's Logo symbolizes guidance towards new and old consumers in the world of shoes. Our vision is to provide a wide array of shoes
+         while providing top service and opportunities for sellers and consumers. 
+      </p>
+    </div>
+  </div>
+</div>
+</section>
+
+
 <section class="home-products">
 
-   <h1 class="heading">latest products</h1>
+   <h1 class="heading">Just For You</h1>
 
    <div class="swiper products-slider">
 
@@ -161,7 +162,6 @@ include 'components/wishlist_cart.php';
       <input type="hidden" name="name" value="<?= $fetch_product['name']; ?>">
       <input type="hidden" name="price" value="<?= $fetch_product['price']; ?>">
       <input type="hidden" name="image" value="<?= $fetch_product['image_01']; ?>">
-      <button class="fas fa-heart" type="submit" name="add_to_wishlist"></button>
       <a href="quick_view.php?pid=<?= $fetch_product['id']; ?>" class="fas fa-eye"></a>
       <img src="uploaded_img/<?= $fetch_product['image_01']; ?>" alt="">
       <div class="name"><?= $fetch_product['name']; ?></div>
@@ -169,7 +169,6 @@ include 'components/wishlist_cart.php';
          <div class="price"><span>$</span><?= $fetch_product['price']; ?><span>/-</span></div>
          <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
       </div>
-      <input type="submit" value="add to cart" class="btn" name="add_to_cart">
    </form>
    <?php
       }
@@ -185,12 +184,6 @@ include 'components/wishlist_cart.php';
    </div>
 
 </section>
-
-
-
-
-
-
 
 
 

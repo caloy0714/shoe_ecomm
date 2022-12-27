@@ -25,17 +25,6 @@ if(isset($_POST['add_product'])){
    $image_tmp_name_01 = $_FILES['image_01']['tmp_name'];
    $image_folder_01 = '../uploaded_img/'.$image_01;
 
-   $image_02 = $_FILES['image_02']['name'];
-   $image_02 = filter_var($image_02, FILTER_SANITIZE_STRING);
-   $image_size_02 = $_FILES['image_02']['size'];
-   $image_tmp_name_02 = $_FILES['image_02']['tmp_name'];
-   $image_folder_02 = '../uploaded_img/'.$image_02;
-
-   $image_03 = $_FILES['image_03']['name'];
-   $image_03 = filter_var($image_03, FILTER_SANITIZE_STRING);
-   $image_size_03 = $_FILES['image_03']['size'];
-   $image_tmp_name_03 = $_FILES['image_03']['tmp_name'];
-   $image_folder_03 = '../uploaded_img/'.$image_03;
 
    $select_products = $conn->prepare("SELECT * FROM `products` WHERE name = ?");
    $select_products->execute([$name]);
@@ -44,16 +33,14 @@ if(isset($_POST['add_product'])){
       $message[] = 'product name already exist!';
    }else{
 
-      $insert_products = $conn->prepare("INSERT INTO `products`(name, details, price, image_01, image_02, image_03) VALUES(?,?,?,?,?,?)");
-      $insert_products->execute([$name, $details, $price, $image_01, $image_02, $image_03]);
+      $insert_products = $conn->prepare("INSERT INTO `products`(name, details, price, image_01) VALUES(?,?,?,?)");
+      $insert_products->execute([$name, $details, $price, $image_01]);
 
       if($insert_products){
-         if($image_size_01 > 2000000 OR $image_size_02 > 2000000 OR $image_size_03 > 2000000){
+         if($image_size_01 > 2000000){
             $message[] = 'image size is too large!';
          }else{
             move_uploaded_file($image_tmp_name_01, $image_folder_01);
-            move_uploaded_file($image_tmp_name_02, $image_folder_02);
-            move_uploaded_file($image_tmp_name_03, $image_folder_03);
             $message[] = 'new product added!';
          }
 
@@ -70,8 +57,6 @@ if(isset($_GET['delete'])){
    $delete_product_image->execute([$delete_id]);
    $fetch_delete_image = $delete_product_image->fetch(PDO::FETCH_ASSOC);
    unlink('../uploaded_img/'.$fetch_delete_image['image_01']);
-   unlink('../uploaded_img/'.$fetch_delete_image['image_02']);
-   unlink('../uploaded_img/'.$fetch_delete_image['image_03']);
    $delete_product = $conn->prepare("DELETE FROM `products` WHERE id = ?");
    $delete_product->execute([$delete_id]);
    $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE pid = ?");
@@ -95,12 +80,18 @@ if(isset($_GET['delete'])){
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
    <link rel="stylesheet" href="../css/admin_style.css">
+   <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   <!-- CSS only -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+   <!-- JavaScript Bundle with Popper -->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 </head>
 <body>
-
 <?php include '../components/admin_header.php'; ?>
-
 <section class="add-products">
 
    <h1 class="heading">add product</h1>
@@ -108,27 +99,18 @@ if(isset($_GET['delete'])){
    <form action="" method="post" enctype="multipart/form-data">
       <div class="flex">
          <div class="inputBox">
-            <span>product name (required)</span>
+            <span>product name</span>
             <input type="text" class="box" required maxlength="100" placeholder="enter product name" name="name">
          </div>
          <div class="inputBox">
-            <span>product price (required)</span>
+            <span>product price</span>
             <input type="number" min="0" class="box" required max="9999999999" placeholder="enter product price" onkeypress="if(this.value.length == 10) return false;" name="price">
          </div>
         <div class="inputBox">
-            <span>image 01 (required)</span>
+            <span>image 01</span>
             <input type="file" name="image_01" accept="image/jpg, image/jpeg, image/png, image/webp" class="box" required>
-        </div>
-        <div class="inputBox">
-            <span>image 02 (required)</span>
-            <input type="file" name="image_02" accept="image/jpg, image/jpeg, image/png, image/webp" class="box" required>
-        </div>
-        <div class="inputBox">
-            <span>image 03 (required)</span>
-            <input type="file" name="image_03" accept="image/jpg, image/jpeg, image/png, image/webp" class="box" required>
-        </div>
          <div class="inputBox">
-            <span>product details (required)</span>
+            <span>product details</span>
             <textarea name="details" placeholder="enter product details" class="box" required maxlength="500" cols="30" rows="10"></textarea>
          </div>
       </div>
@@ -178,7 +160,54 @@ if(isset($_GET['delete'])){
 
 
 
-<script src="../js/admin_script.js"></script>
-   
+<script src="../js/admin_script.js">
+</script>
+<style>
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
+</style>
+</head>
+
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+<script>
+// Get the button
+let mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
 </body>
 </html>

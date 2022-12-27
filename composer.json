@@ -1,0 +1,11 @@
+{
+    "name": "caloy/ber",
+    "autoload": {
+        "psr-4": {
+            "Caloy\\Ber\\": "src/"
+        }
+    },
+    "require": {
+        "tecnickcom/tcpdf": "^6.6"
+    }
+}
