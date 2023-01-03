@@ -101,10 +101,10 @@ if(isset($_POST['update'])){
       <input type="number" name="price" required class="box" min="0" max="9999999999" placeholder="enter product price" onkeypress="if(this.value.length == 10) return false;" value="<?= $fetch_products['price']; ?>">
       <span>update details</span>
       <textarea name="details" class="box" required cols="30" rows="10"><?= $fetch_products['details']; ?></textarea>
-      <span>update image 01</span>
+      <span>update image</span>
       <input type="file" name="image_01" accept="image/jpg, image/jpeg, image/png, image/webp" class="box">
       <div class="flex-btn">
-         <input type="submit" name="update" class="btn" value="update">
+         <input type="submit" name="update" class="blue-btn" value="update">
          <a href="products.php" class="option-btn">go back</a>
       </div>
    </form>

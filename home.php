@@ -79,7 +79,7 @@ if(isset($_SESSION['user_id'])){
 
 <section class="category">
 
-   <h1 class="heading">shop by category</h1>
+   <h1 class="heading" style="color: white;">shop by category</h1>
 
    <div class="swiper category-slider">
 
@@ -119,7 +119,7 @@ if(isset($_SESSION['user_id'])){
 
 </section>
 
-<section>
+<section style="color: white;">
 <div class="container-fluid">
   <div class="row">
     <div class="col-xl-6 col-lg-6 col-md-6" style="border:8px solid 
@@ -145,7 +145,7 @@ if(isset($_SESSION['user_id'])){
 
 <section class="home-products">
 
-   <h1 class="heading">Just For You</h1>
+   <h1 class="heading" style="color: white;">Just For You</h1>
 
    <div class="swiper products-slider">
 
@@ -166,7 +166,7 @@ if(isset($_SESSION['user_id'])){
       <img src="uploaded_img/<?= $fetch_product['image_01']; ?>" alt="">
       <div class="name"><?= $fetch_product['name']; ?></div>
       <div class="flex">
-         <div class="price"><span>$</span><?= $fetch_product['price']; ?><span>/-</span></div>
+         <div class="price"><span>₱</span><?= $fetch_product['price']; ?><span>/-</span></div>
          <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
       </div>
    </form>

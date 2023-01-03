@@ -44,7 +44,7 @@ html{
 }
 
 body{
-   background-image: url('https://wallpapertag.com/wallpaper/full/6/e/d/389331-amazing-light-grey-background-2560x1600-1080p.jpg');
+   background-image: url('https://wallpaperaccess.com/full/1129018.jpg');
    background-repeat:no-repeat;
    -webkit-background-size: cover;
    -moz-background-size: cover;
@@ -88,6 +88,9 @@ section{
    background-color: var(--black);
 }
 
+.white{
+   color:white;
+}
 .orange-button{
    background-color: var(--orange);
 }
@@ -112,7 +115,7 @@ section{
 .message{
    position: sticky;
    top:0;
-   max-width: 1300px;
+   max-width: 2300px;
    margin:0 auto;
    background-color: var(--light-bg);
    padding:2rem;
@@ -165,7 +168,7 @@ section{
 .header{
    position: sticky;
    top:0; left:0; right:0;
-   background-color: var(--light-bg);
+   background-color: var(--white);
    box-shadow: var(--box-shadow);
    z-index: 1000;
 }
@@ -947,7 +950,7 @@ section{
 }
 
 .footer{
-   background-color: var(--white);
+   background-color: var(--light-bg);
 }
 
 .footer .grid{

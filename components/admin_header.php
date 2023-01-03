@@ -11,32 +11,19 @@
    }
 ?>
 
-<header class="header">
+<header class="header" style="color: white;">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <section class="flex">
 
-      <a href="products.php" class="logo"><img src="../images/logo_2.png" height="80" width="80"><span>Sneaky Makers</span></a>
+      <a href="products.php" class="logo"><img src="../images/logo_4.png" height="80" width="80"><span>Sneaky Makers</span></a>
 
       <nav class="navbar">
-         <a href="../admin/products.php">products</a>
-         <a href="../admin/placed_orders.php">orders</a>
-         <a href="../admin/admin_accounts.php">admins</a>
-         <a href="../admin/users_accounts.php">users</a>
+         <a href="../admin/products.php">Products</a>
+         <a href="../admin/placed_orders.php">Orders</a>
+         <a href="../admin/admin_accounts.php">Admins</a>
+         <a href="../admin/users_accounts.php">Users</a>
       </nav>
-
-      <div class="icons">
-         <div id="menu-btn" class="fas fa-bars"></div>
-         <div id="user-btn" class="fas fa-user"></div>
-      </div>
-
-      <div class="profile">
-         <?php
-            $select_profile = $conn->prepare("SELECT * FROM `admins` WHERE id = ?");
-            $select_profile->execute([$admin_id]);
-            $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
-         ?>
-         <a href="../components/admin_logout.php" class="delete-btn" onclick="return confirm('logout from the website?');">logout</a> 
-      </div>
 
    </section>
 

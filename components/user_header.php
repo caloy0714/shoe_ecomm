@@ -17,7 +17,7 @@
 <header class="header">
    <section class="flex">
 
-      <a href="home.php" class="logo"><img src="images/logo.png" height="80" width="80"><span>Sneaker Crib</span></a>
+      <a href="home.php" class="logo"><img src="images/logo_3.png" height="80" width="80"><span>Sneaker Crib</span></a>
 
       <div class="navbar">
          <nav>

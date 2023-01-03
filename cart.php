@@ -29,7 +29,7 @@ if(isset($_POST['update_qty'])){
    $qty = filter_var($qty, FILTER_SANITIZE_STRING);
    $update_qty = $conn->prepare("UPDATE `cart` SET quantity = ? WHERE id = ?");
    $update_qty->execute([$qty, $cart_id]);
-   $message[] = 'cart quantity updated';
+   $message[] = 'Updated';
 }
 
 ?>
@@ -58,7 +58,7 @@ if(isset($_POST['update_qty'])){
 
 <section class="products shopping-cart">
 
-   <h3 class="heading">Shopping Cart</h3>
+   <h3 class="heading" style="color: white;">Shopping Cart</h3>
 
    <div class="box-container">
 
@@ -75,11 +75,11 @@ if(isset($_POST['update_qty'])){
       <img src="uploaded_img/<?= $fetch_cart['image']; ?>" alt="">
       <div class="name"><?= $fetch_cart['name']; ?></div>
       <div class="flex">
-         <div class="price">$<?= $fetch_cart['price']; ?>/-</div>
+         <div class="price">₱<?= $fetch_cart['price']; ?>/-</div>
          <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="<?= $fetch_cart['quantity']; ?>">
          <button type="submit" class="fas fa-edit" name="update_qty"></button>
       </div>
-      <div class="sub-total"> sub total : <span>$<?= $sub_total = ($fetch_cart['price'] * $fetch_cart['quantity']); ?>/-</span> </div>
+      <div class="sub-total">Total: <span>₱<?= $sub_total = ($fetch_cart['price'] * $fetch_cart['quantity']); ?>/-</span> </div>
       <input type="submit" value="delete item" onclick="return confirm('delete this from cart?');" class="delete-btn" name="delete">
    </form>
    <?php
@@ -92,10 +92,10 @@ if(isset($_POST['update_qty'])){
    </div>
 
    <div class="cart-total">
-      <p>grand total : <span>$<?= $grand_total; ?>/-</span></p>
+      <p><span>₱<?= $grand_total; ?>/-</span></p>
       <a href="shop.php" class="option-btn">continue shopping</a>
-      <a href="cart.php?delete_all" class="delete-btn <?= ($grand_total > 1)?'':'disabled'; ?>" onclick="return confirm('delete all from cart?');">delete all item</a>
-      <a href="checkout.php" class="btn <?= ($grand_total > 1)?'':'disabled'; ?>">proceed to checkout</a>
+      <a href="cart.php?delete_all" class="delete-btn <?= ($grand_total > 1)?'':'disabled'; ?>" onclick="return confirm('Are you sure you want to delete all?');">delete all item</a>
+      <a href="checkout.php" class="orange-button <?= ($grand_total > 1)?'':'disabled'; ?>">proceed to checkout</a>
    </div>
 
 </section>
