@@ -1,6 +1,6 @@
 <?php
 
-include 'components/connect.php';
+include 'pdo/connect.php';
 
 session_start();
 
@@ -34,7 +34,7 @@ if(isset($_SESSION['user_id'])){
 </head>
 <body>
    
-<?php include 'components/user_header.php'; ?>
+<?php include 'pdo/user_header.php'; ?>
 
 <section class="orders">
 
@@ -76,19 +76,5 @@ if(isset($_SESSION['user_id'])){
 
 
 
+<?php include 'pdo/footer.php'; ?>
 
-
-
-
-
-
-
-
-
-
-<?php include 'components/footer.php'; ?>
-
-<script src="js/script.js"></script>
-
-</body>
-</html>

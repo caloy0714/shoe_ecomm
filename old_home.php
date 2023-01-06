@@ -1,7 +1,7 @@
 <?php
 
-include 'components/connect.php';
-include 'components/wishlist_cart.php';
+include 'pdo/connect.php';
+include 'pdo/wishlist_cart.php';
 session_start();
 
 if(isset($_SESSION['user_id'])){
@@ -33,7 +33,7 @@ if(isset($_SESSION['user_id'])){
 </head>
 <body>
    
-<?php include 'components/user_header.php'; ?>
+<?php include 'pdo/user_header.php'; ?>
 
 <div class="home-bg">
 
@@ -174,7 +174,7 @@ if(isset($_SESSION['user_id'])){
 
 
 
-<?php include 'components/footer.php'; ?>
+<?php include 'pdo/footer.php'; ?>
 
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
 

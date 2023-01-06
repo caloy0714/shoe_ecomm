@@ -1,6 +1,6 @@
 <?php
 
-include 'components/connect.php';
+include 'pdo/connect.php';
 
 session_start();
 
@@ -11,7 +11,7 @@ if(isset($_SESSION['user_id'])){
    header('location:user_login.php');
 };
 
-include 'components/wishlist_cart.php';
+include 'pdo/wishlist_cart.php';
 
 if(isset($_POST['delete'])){
    $wishlist_id = $_POST['wishlist_id'];
@@ -48,7 +48,7 @@ if(isset($_GET['delete_all'])){
 </head>
 <body>
    
-<?php include 'components/user_header.php'; ?>
+<?php include 'pdo/user_header.php'; ?>
 
 <section class="products">
 
@@ -108,7 +108,7 @@ if(isset($_GET['delete_all'])){
 
 
 
-<?php include 'components/footer.php'; ?>
+<?php include 'pdo/footer.php'; ?>
 
 <script src="js/script.js"></script>
 

@@ -1,6 +1,6 @@
 <?php
 
-include 'components/connect.php';
+include 'pdo/connect.php';
 
 session_start();
 
@@ -10,7 +10,7 @@ if(isset($_SESSION['user_id'])){
    $user_id = '';
 };
 
-include 'components/wishlist_cart.php';
+include 'pdo/wishlist_cart.php';
 
 ?>
 
@@ -35,7 +35,7 @@ include 'components/wishlist_cart.php';
 </head>
 <body>
    
-<?php include 'components/user_header.php'; ?>
+<?php include 'pdo/user_header.php'; ?>
 
 <section class="products">
 
@@ -87,7 +87,7 @@ include 'components/wishlist_cart.php';
 
 
 
-<?php include 'components/footer.php'; ?>
+<?php include 'pdo/footer.php'; ?>
 
 <script src="js/script.js"></script>
 

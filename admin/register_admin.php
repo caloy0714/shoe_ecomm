@@ -1,6 +1,6 @@
 <?php
 
-include '../components/connect.php';
+include '../pdo/connect.php';
 
 session_start();
 
@@ -23,10 +23,10 @@ if(isset($_POST['submit'])){
    $select_admin->execute([$name]);
 
    if($select_admin->rowCount() > 0){
-      $message[] = 'username already exist!';
+      $message[] = 'username already taken';
    }else{
       if($pass != $cpass){
-         $message[] = 'confirm password not matched!';
+         $message[] = 'password does not match';
       }else{
          $insert_admin = $conn->prepare("INSERT INTO `admins`(name, password) VALUES(?,?)");
          $insert_admin->execute([$name, $cpass]);
@@ -76,7 +76,7 @@ if(isset($_POST['submit'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>update product</title>
+   <title>ADMIN REGISTER</title>
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
@@ -92,17 +92,17 @@ if(isset($_POST['submit'])){
 </head>
 <body>
 
-<?php include '../components/admin_header.php'; ?>
+<?php include '../pdo/admin_header.php'; ?>
 
 <section class="update-product">
 
    <h1 class="heading">Add Admin</h1>
   <form action="" method="post">
-      <span>update name</span>
+      <span>name</span>
       <input type="text" name="name" required placeholder="enter your username" maxlength="20"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
       <span>password</span>
       <input type="password" name="pass" required placeholder="enter your password" maxlength="20"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
-      <span>cpass</span>
+      <span>confirm password</span>
       <input type="password" name="cpass" required placeholder="confirm your password" maxlength="20"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">      
       
       <input type="submit" value="register now" class="option-btn" name="submit">

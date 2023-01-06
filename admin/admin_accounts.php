@@ -1,6 +1,6 @@
 <?php
 
-include '../components/connect.php';
+include '../pdo/connect.php';
 
 session_start();
 
@@ -25,7 +25,7 @@ if(isset($_GET['delete'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>admin accounts</title>
+   <title>ADMIN ACCOUNTS</title>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
 <link rel="stylesheet" href="../css/admin_style.css">
@@ -41,7 +41,7 @@ if(isset($_GET['delete'])){
 </head>
 <body>
 
-<?php include '../components/admin_header.php'; ?>
+<?php include '../pdo/admin_header.php'; ?>
 
 <section class="accounts">
 
@@ -65,11 +65,6 @@ if(isset($_GET['delete'])){
       <p> admin name : <span><?= $fetch_accounts['name']; ?></span> </p>
       <div class="flex-btn">
          <a href="admin_accounts.php?delete=<?= $fetch_accounts['id']; ?>" onclick="return confirm('delete this account?')" class="delete-btn">delete</a>
-         <?php
-            if($fetch_accounts['id'] == $admin_id){
-               echo '<a href="update_profile.php" class="option-btn">update</a>';
-            }
-         ?>
       </div>
    </div>
    <?php

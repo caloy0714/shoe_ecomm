@@ -1,6 +1,6 @@
 <?php
 
-include '../components/connect.php';
+include '../pdo/connect.php';
 
 session_start();
 
@@ -30,7 +30,7 @@ if(isset($_POST['add_product'])){
    $select_products->execute([$name]);
 
    if($select_products->rowCount() > 0){
-      $message[] = 'product name already exist!';
+      $message[] = 'product already exists';
    }else{
 
       $insert_products = $conn->prepare("INSERT INTO `products`(name, details, price, image_01) VALUES(?,?,?,?)");
@@ -38,10 +38,10 @@ if(isset($_POST['add_product'])){
 
       if($insert_products){
          if($image_size_01 > 2000000){
-            $message[] = 'image size is too large!';
+            $message[] = 'image size is too large';
          }else{
             move_uploaded_file($image_tmp_name_01, $image_folder_01);
-            $message[] = 'new product added!';
+            $message[] = 'new product added';
          }
 
       }
@@ -91,7 +91,7 @@ if(isset($_GET['delete'])){
 
 </head>
 <body>
-<?php include '../components/admin_header.php'; ?>
+<?php include '../pdo/admin_header.php'; ?>
 <section class="add-products">
 
    <h1 class="heading">add product</h1>
@@ -99,18 +99,18 @@ if(isset($_GET['delete'])){
    <form action="" method="post" enctype="multipart/form-data">
       <div class="flex">
          <div class="inputBox">
-            <span>product name</span>
+            <span>Product name</span>
             <input type="text" class="box" required maxlength="100" placeholder="enter product name" name="name">
          </div>
          <div class="inputBox">
-            <span>product price</span>
+            <span>Product price</span>
             <input type="number" min="0" class="box" required max="9999999999" placeholder="enter product price" onkeypress="if(this.value.length == 10) return false;" name="price">
          </div>
         <div class="inputBox">
-            <span>image 01</span>
+            <span>Image</span>
             <input type="file" name="image_01" accept="image/jpg, image/jpeg, image/png, image/webp" class="box" required>
          <div class="inputBox">
-            <span>product details</span>
+            <span>Product details</span>
             <textarea name="details" placeholder="enter product details" class="box" required maxlength="500" cols="30" rows="10"></textarea>
          </div>
       </div>

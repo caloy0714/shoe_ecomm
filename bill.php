@@ -1,6 +1,6 @@
 <?php
 
-include '../components/connect.php';
+include '../pdo/connect.php';
 
 session_start();
 
@@ -99,7 +99,7 @@ if(isset($_GET['delete'])){
 </head>
 <body>
 
-<?php include '../components/admin_header.php'; ?>
+<?php include '../pdo/admin_header.php'; ?>
 
 <section class="add-products">
 

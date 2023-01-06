@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
-include 'components/connect.php';
-include 'components/wishlist_cart.php';
+include 'pdo/connect.php';
+include 'pdo/wishlist_cart.php';
 
 class shoe{
 

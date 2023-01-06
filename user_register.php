@@ -1,6 +1,6 @@
 <?php
 
-include 'components/connect.php';
+include 'pdo/connect.php';
 
 session_start();
 
@@ -61,7 +61,7 @@ if(isset($_POST['submit'])){
 </head>
 <body>
    
-<?php include 'components/user_header.php'; ?>
+<?php include 'pdo/user_header.php'; ?>
 
 <section class="form-container">
 
@@ -90,7 +90,7 @@ if(isset($_POST['submit'])){
 
 
 
-<?php include 'components/footer.php'; ?>
+<?php include 'pdo/footer.php'; ?>
 
 <script src="js/script.js"></script>
 
